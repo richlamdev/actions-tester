@@ -21,6 +21,6 @@ jobs:
 
       # Call your Gitleaks action
       - name: Scan for secrets
-        uses: richlamdev/richlamdev-actions/gitleaks-scanning@v1
+        uses: richlamdev/richlamdev-actions/gitleaks-scanning@main
         # env:
         #   GITLEAKS_LICENSE_KEY: ${{ secrets.GITLEAKS_LICENSE }}
