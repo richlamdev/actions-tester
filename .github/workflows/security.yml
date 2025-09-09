@@ -22,5 +22,9 @@ jobs:
       # Call your Gitleaks action
       - name: Scan for secrets
         uses: richlamdev/richlamdev-actions/gitleaks-scanning@main
+        with:
+          scan-mode: ${{ github.event.inputs.scan-mode || 'latest-commit' }}
+          config-path: ${{ github.event.inputs.config-path || '.gitleaks.toml' }}
+          gitleaks-flags: ${{ github.event.inputs.gitleaks-flags || '' }}
         # env:
         #   GITLEAKS_LICENSE_KEY: ${{ secrets.GITLEAKS_LICENSE }}
