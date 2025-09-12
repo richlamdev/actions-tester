@@ -28,6 +28,7 @@ paths = [
     '''docs/examples/.*''',              # Ignore documentation examples
     '''legacy/old-system/.*''',          # Ignore legacy code we can't change
     '''config/sample-config.js''',       # Ignore sample configuration
+    '''mock_secrets.txt''',              # Ignore mock secrets
 ]
 
 # Specific strings to ignore
