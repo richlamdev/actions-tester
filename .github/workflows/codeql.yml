@@ -43,6 +43,7 @@ jobs:
             - "**/*.txt"
             - "**/*.json"
             - "**/*.log"
+            - "**/*.toml"
           queries:
             - uses: security-and-quality
 
