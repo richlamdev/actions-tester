@@ -9,23 +9,10 @@ on:
 
 jobs:
   secret-scan:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-
-    steps:
-      # Required: Checkout the code
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      # Call your Gitleaks action
-      - name: Scan for secrets
-        uses: richlamdev/richlamdev-actions/.github/actions/gitleaks-scanning@main
-        with:
-          scan-mode: latest-commit
-          config-path: .gitleaks.toml
-          gitleaks-flags: ''
-
-        # env:
-        #   GITLEAKS_LICENSE_KEY: ${{ secrets.GITLEAKS_LICENSE }}
+    uses: richlamdev/richlamdev-actions/.github/workflows/gitleaks-scan-reusable.yml@main
+    with:
+      scan-mode: latest-commit
+      config-path: .gitleaks.toml
+      gitleaks-flags: ''
+    # secrets:
+    #   GITLEAKS_LICENSE_KEY: ${{ secrets.GITLEAKS_LICENSE }}
