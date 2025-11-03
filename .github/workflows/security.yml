@@ -11,7 +11,7 @@ jobs:
   secret-scan:
     uses: richlamdev/richlamdev-actions/.github/workflows/gitleaks-scan-reusable.yml@main
     with:
-      scan-mode: latest-commit
+      scan-mode: full
       config-path: .gitleaks.toml
       gitleaks-flags: ''
     # secrets:
