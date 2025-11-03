@@ -1,0 +1,54 @@
+# Custom Gitleaks configuration for my-awesome-app
+# This will OVERRIDE the action's default config completely
+
+# Start with Gitleaks built-in rules
+[extend]
+useDefault = true
+
+# Add custom rules specific to this project
+[[rules]]
+description = "Our Custom API Key Format"
+id = "custom-api-key"
+regex = '''MYAPP_API_[A-Z0-9]{32}'''
+tags = ["api", "myapp"]
+
+[[rules]]
+description = "Database Connection String"
+id = "db-connection"
+regex = '''postgresql://[^\\s'"]+'''
+tags = ["database", "connection"]
+
+# Project-specific allowlist
+[allowlist]
+description = "ignore project-specific false positives"
+
+# Files to ignore completely
+paths = [
+    '''tests/.*''',                      # Ignore all test files
+    '''docs/examples/.*''',              # Ignore documentation examples
+    '''legacy/old-system/.*''',          # Ignore legacy code we can't change
+    '''config/sample-config.js''',       # Ignore sample configuration
+    '''mock_secrets.txt''',              # Ignore mock secrets
+]
+
+# Specific strings to ignore
+regexes = [
+    # Test data
+    '''test_api_key_12345''',
+    '''example\.database\.com''',
+    '''localhost:5432''',
+
+    # Known safe values
+    '''PLACEHOLDER_SECRET''',
+    '''YOUR_API_KEY_HERE''',
+    '''dummy_password''',
+]
+
+# Stop words to reduce noise
+stopwords = [
+    "example",
+    "test",
+    "dummy",
+    "placeholder",
+    "sample"
+]
