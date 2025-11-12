@@ -2,17 +2,21 @@ name: Security Scan
 
 # When to run the scan
 on:
-  push:
-    branches: [ main, develop ]
   pull_request:
-    branches: [ main, develop ]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+  id-token: write
 
 jobs:
   secret-scan:
     uses: richlamdev/richlamdev-actions/.github/workflows/gitleaks-scan-reusable.yml@main
     with:
-      scan-mode: latest-commit
+      scan-mode: full
       config-path: .gitleaks.toml
       gitleaks-flags: ''
-    # secrets:
-    #   GITLEAKS_LICENSE_KEY: ${{ secrets.GITLEAKS_LICENSE }}
+    secrets: inherit
